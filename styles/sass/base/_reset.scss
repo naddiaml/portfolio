@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+section {
+    margin: 15vh auto;
+
+    @include largeBreakpoint {
+        margin: 10vh auto;
+    }
+}
+
+.divider {
+    border: 1px solid rgba(191, 191, 191, 0.8);
+}
+
+.required {
+    margin-left: .2rem;
+    font-weight: 500;
+    color: #e25e46;
+}
