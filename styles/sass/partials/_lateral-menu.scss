@@ -1,0 +1,51 @@
+.lateral-menu__container {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    width: 4.5rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0px 4px rgba(146, 146, 146, 0.15);
+    transition: left .2s;
+    background-color: white;
+
+
+    .lateral-menu {
+        height: 90%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            width: 2.5rem;
+        }
+
+        .lateral-menu__icons {
+            display: flex;
+            flex-direction: column;
+
+            ul {
+                list-style: none;
+                margin-bottom: 0;
+                padding-left: 0;
+
+                li {
+                    &:not(:first-child) {
+                        margin-top: 1rem;
+                    }
+
+                    a {
+                        font-size: 1.2rem;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+    @include largeBreakpoint {
+        display: none;
+    }
+}

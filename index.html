@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BootStrap Script -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Link Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <!-- Script Font Awesome -->
+    <script src="https://kit.fontawesome.com/8e95fe90e4.js" crossorigin="anonymous"></script>
     <!-- SEO Optimization -->
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
     <!-- Link CSS -->
@@ -12,7 +21,102 @@
 </head>
 
 <body>
-    <!-- Content -->
+    <!-- Lateral Menu -->
+    <div class="lateral-menu__container">
+        <div class="lateral-menu">
+            <img src="assets/NM-Logo.svg" alt="" class="logo">
+            <div class="lateral-menu__icons">
+                <ul>
+                    <li>
+                        <a href="https://www.behance.net/nadiamlinarevic" title="Visita mi perfil en Behance"
+                            target="_blank">
+                            <i class="fa-brands fa-square-behance"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/nadia-mlinarevic/" title="Visita mi perfil en LinkedIn"
+                            target="_blank">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/naddiaml" title="Visita mi perfil en GitHub" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Header -->
+    <div class="header__container">
+        <header class="header">
+            <div class="hamburger-container">
+                <div class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </div>
+            <div class="header__items-container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html#hero" class="current">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="index.html#info">Sobre mí</a>
+                        </li>
+                        <li>
+                            <a href="index.html#portfolio">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="index.html#contact">Contáctame</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="nav__downloadCV">
+                    <a href="https://drive.google.com/file/d/1G7_p4pSFZZUsHHxKEHoufGj44gA9xJAL/view?usp=sharing"
+                        target="_blank">
+                        Descargar CV
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </button>
+            </div>
+        </header>
+    </div>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero__text-container">
+            <span class="bold">Hola!</span>
+            <span>Mi nombre es</span>
+            <img src="assets/name.svg" alt="">
+            <span class="position">FRONTEND DEVELOPER JR.</span>
+        </div>
+    </section>
+
+    <script>
+        let prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            const currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector(".lateral-menu__container").style.left = "0";
+                document.querySelector(".header__container").classList.remove("header-onScroll");
+            } else {
+                document.querySelector(".lateral-menu__container").style.left = "-4.5rem";
+                document.querySelector(".header__container").classList.add("header-onScroll");
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

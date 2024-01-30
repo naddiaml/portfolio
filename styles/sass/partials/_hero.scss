@@ -1,0 +1,103 @@
+.hero {
+    width: 70%;
+    height: 88vh;
+    margin: auto;
+    display: flex;
+    align-items: center;
+
+    .hero__text-container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        span {
+            font-size: 1.25rem;
+
+            &.bold {
+                font-weight: 700;
+            }
+        }
+
+        img {
+            margin-top: -1rem;
+            width: 18rem;
+        }
+
+        .position {
+            margin-top: .5rem;
+            font-size: 1.1rem;
+            letter-spacing: .12rem;
+            word-spacing: .5rem;
+        }
+    }
+
+    @include largeBreakpoint {
+        .hero__text-container {
+            margin: auto;
+            
+            span {
+                font-size: 1.2rem;
+
+                &.bold {
+                    left: 3.5rem;
+                }
+            }
+
+            img {
+                margin-top: -1.5rem;
+                width: 20rem;
+            }
+
+            .position {
+                margin-top: .5rem;
+                font-size: 1.25rem;
+            }
+        }
+    }
+
+    @include smBreakpoint {
+        width: 90%;
+
+        .hero__text-container {
+            margin: auto;
+            
+            span {
+                font-size: 1.2rem;
+
+                &.bold {
+                    left: 3.5rem;
+                }
+            }
+
+            img {
+                width: 15.5rem;
+            }
+
+            .position {
+                margin-top: .5rem;
+                font-size: .9rem;
+            }
+        }
+    }
+}
+
+.info {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: .9rem;
+
+    .bold__info {
+        font-weight: 700;
+        display: block;
+    }
+
+    @include smBreakpoint {
+        width: 85%;
+
+        span {
+            font-size: .78rem;
+        }
+    }
+}
