@@ -1,0 +1,193 @@
+@import '../base/_anim.scss';
+
+.about {
+
+    .about-me__container {
+        width: 85%;
+        margin: 25vh auto;
+        display: flex;
+        align-items: start;
+        justify-content: space-evenly;
+
+        .about__img {
+            background-image: url(../../assets/about-img.jpg);
+            height: 23rem;
+            width: 40%;
+            background-position: 50% 50%;
+            background-size: cover;
+            border-radius: 1rem;
+            z-index: -10;
+        }
+
+        .about-decoration {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            z-index: -1;
+            left: 35%;
+            top: 160vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 4px 4px 4px rgba(173, 173, 173, 0.15);
+
+
+            .wave {
+                width: 50%;
+                animation-name: wave-animation;
+                animation-duration: 2.5s;
+                animation-iteration-count: infinite;
+                transform-origin: 70% 70%;
+                display: inline-block;
+            }
+        }
+
+        .about__text-container {
+            width: 45%;
+
+            h2 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0;
+            }
+
+            p {
+                font-size: .95rem;
+                margin-top: 1rem;
+                margin-bottom: 0;
+            }
+        }
+
+        @include largeBreakpoint {
+            flex-direction: column;
+            margin: 10vh auto;
+
+            .about__img {
+                display: none;
+            }
+
+            .about-decoration {
+                display: none;
+            }
+
+            .about__text-container {
+                width: 80%;
+                text-align: center;
+                margin: 3rem auto 2rem;
+            }
+        }
+
+        @include medBreakpoint {
+
+            .about__text-container {
+                width: 80%;
+
+                p {
+                    text-align: justify;
+                    font-size: .8rem;
+                }
+            }
+        }
+
+        @include smBreakpoint {
+            width: 90%;
+
+            .about__text-container {
+                width: 90%;
+
+                p {
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    .tech-stack {
+        width: fit-content;
+        margin: auto;
+        display: flex;
+        align-items: center;
+
+        h3 {
+            width: fit-content;
+            font-size: 1.17rem;
+            font-weight: 700;
+        }
+
+        .divider {
+            height: 2rem;
+            margin: 0 2rem;
+        }
+
+        .stack__items-container {
+            display: flex;
+            align-items: center;
+
+            .stack-item {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 4px 4px 4px rgba(173, 173, 173, 0.15);
+
+                &:not(:first-child) {
+                    margin-left: 1.5rem;
+                }
+
+                img {
+                    width: 50%;
+                }
+            }
+        }
+
+        @include largeBreakpoint {
+            flex-direction: column;
+
+            .divider {
+                display: none;
+            }
+
+            .stack__items-container {
+                margin: 2rem 0;
+
+                .stack-item {
+                    &:not(:first-child) {
+                        margin-left: 2.5rem;
+                    }
+                }
+            }
+        }
+
+        @include medBreakpoint {
+            .stack__items-container {
+                margin-top: 2rem;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
+
+                .stack-item {
+                    &:not(:first-child) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        @include smBreakpoint {
+            .stack__items-container {
+                gap: 1rem;
+
+                .stack-item {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                }
+            }
+        }
+    }
+
+}
