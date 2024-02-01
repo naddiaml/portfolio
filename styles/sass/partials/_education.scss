@@ -1,0 +1,79 @@
+.education {
+    background-color: #f9f9f9;
+    padding: 3rem 0;
+
+    h3 {
+        width: fit-content;
+        margin: auto;
+        font-size: 1.17rem;
+        font-weight: 700;
+    }
+
+    .education__cards-container {
+        width: 80%;
+        margin: auto;
+
+        .education__card {
+            height: fit-content;
+            width: 90%;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 4px 4px 4px rgba(173, 173, 173, 0.15);
+
+            img {
+                width: 5rem;
+            }
+
+            .education-card__text-container {
+                margin-left: 3rem;
+                display: flex;
+                flex-direction: column;
+
+                .card__title {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    letter-spacing: -1px;
+                    margin-bottom: .2rem;
+                }
+
+                .card__subtitle {
+                    font-weight: 600;
+                    margin-bottom: .2rem;
+                }
+
+                p {
+                    margin-bottom: 0;
+                }
+            }
+
+            @include medBreakpoint {
+                width: 100%;
+
+                img {
+                    display: none;
+                }
+
+                .education-card__text-container {
+                    margin-left: 0;
+                    font-size: .8rem;
+
+                    .card__title {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            @include smBreakpoint {
+                margin: 1rem auto;
+            }
+        }
+
+        @include largeBreakpoint {
+            width: 90%;
+        }
+    }
+}
