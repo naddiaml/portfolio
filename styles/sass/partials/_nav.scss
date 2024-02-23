@@ -134,11 +134,12 @@
 
         @include largeBreakpoint {
             .hamburger-container {
-                display: block;
-                top: 1.9rem;
-                left: 10vw;
-                cursor: pointer;
-                z-index: 10;
+                position: absolute;
+                display: flex;
+                align-items: center; // Alinea verticalmente con el botón
+                top: 0;
+                left: 0; // Ajusta la posición horizontal según sea necesario
+                height: 100%; // Asegura que el contenedor cubra toda la altura
 
                 @include medBreakpoint {
                     left: 5.5vw;
@@ -199,7 +200,7 @@
 
                 .nav__downloadCV {
                     position: absolute;
-                    right: 7rem;
+                    float: right;
                     z-index: -1;
 
                     @include medBreakpoint {
