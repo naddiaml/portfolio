@@ -78,7 +78,7 @@
                 </label>
             </div>
             <div class="header__items-container">
-                <nav>
+                <nav id="nav">
                     <ul>
                         <li>
                             <a href="index.html#hero" class="current">Inicio</a>
@@ -468,71 +468,87 @@
     </footer>
 
     <script>
-        const telefono = document.querySelector("#telefono");
-        const inputTelefono = window.intlTelInput(telefono, {
-            preferredCountries: ["ar", "uy", "cl"],
-            utilsScript:
-                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-        });
-
-        function submitForm() {
-            const nombre = document.getElementById("nombre").value;
-            const telefono = document.getElementById("telefono").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("mensaje").value;
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (nombre === '' ||
-                telefono === '' ||
-                telefono.length < 10 ||
-                !emailPattern.test(email) ||
-                !inputTelefono.isValidNumber() ||
-                message === '' ||
-                message.trim() === '') {
-                Swal.fire({
-                    icon: 'info',
-                    text: 'Por favor, completa los campos requeridos y asegúrate de que la información ingresada sea válida',
-                    allowOutsideClick: false,
-                })
-                return;
-            } else {
-                const form = document.getElementById('formContacto');
-                const formData = new FormData(form);
-
-                fetch('https://formsubmit.co/02b0172da97107a82819e995ea77cfa4', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.text()) // Leer la respuesta como texto
-                    .then(data => {
-                        Swal.fire({
-                            title: 'Listo! 🎉',
-                            icon: 'success',
-                            html:
-                                'El mensaje fue enviado con éxito. Me pondré en contacto lo más rápido posible',
-                            allowOutsideClick: false
-                        })
-                    })
-                    .catch(error => {
-                        Swal.fire({
-                            icon: 'error',
-                            html:
-                                'Hubo un error al eviar el formulario.' + '<br>Por favor, recarga la página e intentalo de nuevo. <br>Si esto no funciona, puedes comunicarte conmigo enviando un email a la siguiente dirección: ' + '<b>naddiamlv@gmail.com</b>.',
-                            allowOutsideClick: false
-                        })
-                    });
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function () {
-            // Formulario
+            const telefono = document.querySelector("#telefono");
+            const inputTelefono = window.intlTelInput(telefono, {
+                preferredCountries: ["ar", "uy", "cl"],
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+
+            function submitForm() {
+                const nombre = document.getElementById("nombre").value;
+                const telefono = document.getElementById("telefono").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("mensaje").value;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (nombre === '' ||
+                    telefono === '' ||
+                    telefono.length < 10 ||
+                    !emailPattern.test(email) ||
+                    !inputTelefono.isValidNumber() ||
+                    message === '' ||
+                    message.trim() === '') {
+                    Swal.fire({
+                        icon: 'info',
+                        text: 'Por favor, completa los campos requeridos y asegúrate de que la información ingresada sea válida',
+                        allowOutsideClick: false,
+                    })
+                    return;
+                } else {
+                    const form = document.getElementById('formContacto');
+                    const formData = new FormData(form);
+
+                    fetch('https://formsubmit.co/02b0172da97107a82819e995ea77cfa4', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text()) // Leer la respuesta como texto
+                        .then(data => {
+                            Swal.fire({
+                                title: 'Listo! 🎉',
+                                icon: 'success',
+                                html: 'El mensaje fue enviado con éxito. Me pondré en contacto lo más rápido posible',
+                                allowOutsideClick: false
+                            })
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                html: 'Hubo un error al eviar el formulario.' + '<br>Por favor, recarga la página e intentalo de nuevo. <br>Si esto no funciona, puedes comunicarte conmigo enviando un email a la siguiente dirección: ' + '<b>naddiamlv@gmail.com</b>.',
+                                allowOutsideClick: false
+                            })
+                        });
+                }
+            }
+
+            // Event listener para enviar el formulario cuando se envía
             const form = document.getElementById('formContacto');
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
                 submitForm();
             });
+
+            const burgerInput = document.getElementById('burger');
+            const navLinks = document.querySelectorAll('.header__items-container nav ul li a');
+            const nav = document.querySelector('nav');
+
+            burgerInput.addEventListener('click', () => {
+                burgerInput.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            function uncheckBurger() {
+                burgerInput.checked = false;
+                nav.classList.remove('active');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', uncheckBurger);
+            });
         });
 
+        // Event listener para ocultar el menú cuando se hace scroll
         let prevScrollpos = window.pageYOffset;
         window.onscroll = function () {
             const currentScrollPos = window.pageYOffset;
@@ -545,14 +561,6 @@
             }
             prevScrollpos = currentScrollPos;
         }
-
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
