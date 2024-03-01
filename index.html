@@ -482,11 +482,13 @@
                 const message = document.getElementById("mensaje").value;
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+                const countryCode = inputTelefono.getSelectedCountryData().iso2;
+
+                const isValidPhoneNumber = inputTelefono.isValidNumber();
+
                 if (nombre === '' ||
-                    telefono === '' ||
-                    telefono.length < 10 ||
+                    telefono.length < 8 ||
                     !emailPattern.test(email) ||
-                    !inputTelefono.isValidNumber() ||
                     message === '' ||
                     message.trim() === '') {
                     Swal.fire({
@@ -496,15 +498,30 @@
                     })
                     return;
                 } else {
+                    const telefonoConCodigoPais = countryCode + telefono;
+
                     const form = document.getElementById('formContacto');
                     const formData = new FormData(form);
+
+                    formData.append('telefono', telefonoConCodigoPais);
+
+                    Swal.fire({
+                        html: 'Enviando formulario...',
+                        allowOutsideClick: true,
+                        showConfirmButton: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
 
                     fetch('https://formsubmit.co/02b0172da97107a82819e995ea77cfa4', {
                         method: 'POST',
                         body: formData
                     })
-                        .then(response => response.text()) // Leer la respuesta como texto
+                        .then(response => response.text())
                         .then(data => {
+                            Swal.close();
+
                             Swal.fire({
                                 title: 'Listo! 🎉',
                                 icon: 'success',
@@ -513,16 +530,17 @@
                             })
                         })
                         .catch(error => {
+                            Swal.close();
+
                             Swal.fire({
                                 icon: 'error',
-                                html: 'Hubo un error al eviar el formulario.' + '<br>Por favor, recarga la página e intentalo de nuevo. <br>Si esto no funciona, puedes comunicarte conmigo enviando un email a la siguiente dirección: ' + '<b>naddiamlv@gmail.com</b>.',
+                                html: 'Hubo un error al enviar el formulario.' + '<br>Por favor, recarga la página e intentalo de nuevo. <br>Si esto no funciona, puedes comunicarte conmigo enviando un email a la siguiente dirección: ' + '<b>naddiamlv@gmail.com</b>.',
                                 allowOutsideClick: false
                             })
                         });
                 }
             }
 
-            // Event listener para enviar el formulario cuando se envía
             const form = document.getElementById('formContacto');
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
@@ -548,7 +566,6 @@
             });
         });
 
-        // Event listener para ocultar el menú cuando se hace scroll
         let prevScrollpos = window.pageYOffset;
         window.onscroll = function () {
             const currentScrollPos = window.pageYOffset;
