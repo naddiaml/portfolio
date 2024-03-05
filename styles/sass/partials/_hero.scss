@@ -1,6 +1,6 @@
 .hero {
     width: 70%;
-    height: 88vh;
+    height: 84vh;
     margin: auto;
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@
     @include largeBreakpoint {
         .hero__text-container {
             margin: auto;
-            
+
             span {
                 font-size: 1.2rem;
 
@@ -60,7 +60,7 @@
 
         .hero__text-container {
             margin: auto;
-            
+
             span {
                 font-size: 1.2rem;
 
@@ -88,9 +88,16 @@
     justify-content: space-between;
     font-size: .9rem;
 
-    .bold__info {
-        font-weight: 700;
-        display: block;
+    span {
+        &.bold__info {
+            font-weight: 700;
+            display: block;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
     }
 
     @include smBreakpoint {

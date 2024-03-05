@@ -55,7 +55,7 @@ section {
   position: fixed;
   top: 0;
   width: 4.5rem;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0px 4px rgba(146, 146, 146, 0.15);
@@ -76,6 +76,7 @@ section {
 .lateral-menu__container .lateral-menu .lateral-menu__icons {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 }
 .lateral-menu__container .lateral-menu .lateral-menu__icons ul {
   list-style: none;
@@ -116,7 +117,7 @@ section {
   position: absolute;
   display: none;
 }
-.header__container header .hamburger-container #burger {
+.header__container header .hamburger-container input#burger {
   display: none;
 }
 .header__container header .hamburger-container input#burger:checked + label[for=burger] span:first-child {
@@ -287,7 +288,7 @@ section {
 
 .hero {
   width: 70%;
-  height: 88vh;
+  height: 84vh;
   margin: auto;
   display: flex;
   align-items: center;
@@ -361,9 +362,13 @@ section {
   justify-content: space-between;
   font-size: 0.9rem;
 }
-.info .bold__info {
+.info span.bold__info {
   font-weight: 700;
   display: block;
+}
+.info span a {
+  color: #000;
+  text-decoration: none;
 }
 @media screen and (max-width: 580px) {
   .info {
