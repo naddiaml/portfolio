@@ -57,6 +57,7 @@
 
     @include smBreakpoint {
         width: 90%;
+        height: 82vh;
 
         .hero__text-container {
             margin: auto;
@@ -95,8 +96,12 @@
         }
 
         a {
-            color: #000;
-            text-decoration: none;
+            color: #000 !important;
+            text-decoration: none !important;
+
+            &:hover {
+                font-weight: 500;
+            }
         }
     }
 
@@ -104,7 +109,7 @@
         width: 85%;
 
         span {
-            font-size: .78rem;
+            font-size: .7rem;
         }
     }
 }

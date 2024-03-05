@@ -336,6 +336,7 @@ section {
 @media screen and (max-width: 580px) {
   .hero {
     width: 90%;
+    height: 82vh;
   }
   .hero .hero__text-container {
     margin: auto;
@@ -367,15 +368,18 @@ section {
   display: block;
 }
 .info span a {
-  color: #000;
-  text-decoration: none;
+  color: #000 !important;
+  text-decoration: none !important;
+}
+.info span a:hover {
+  font-weight: 500;
 }
 @media screen and (max-width: 580px) {
   .info {
     width: 85%;
   }
   .info span {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
   }
 }
 
